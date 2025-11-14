@@ -12,6 +12,7 @@ from mani_skill.agents.controllers import *
 from mani_skill.agents.registration import register_agent
 from mani_skill.utils import common, sapien_utils
 from mani_skill.utils.structs.actor import Actor
+from mani_skill.sensors.camera import CameraConfig
 
 
 @register_agent()
@@ -43,6 +44,23 @@ class PandaStick(BaseAgent):
     arm_stiffness = 1e3
     arm_damping = 1e2
     arm_force_limit = 100
+
+
+    @property
+    def _sensor_configs(self):
+        return [
+            CameraConfig(
+                uid="hand_camera",
+                pose=sapien.Pose(p=[0, 0, 0], q=[1, 0, 0, 0]),
+                width=256,
+                height=256,
+                fov=np.pi / 2,
+                near=0.01,
+                far=100,
+                mount=self.robot.links_map["camera_link"],
+            )
+        ]
+
 
     @property
     def _controller_configs(self):
