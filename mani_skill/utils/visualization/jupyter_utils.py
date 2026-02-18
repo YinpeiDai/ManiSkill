@@ -2,7 +2,6 @@ from typing import List
 
 import matplotlib.pyplot as plt
 import numpy as np
-from IPython.display import HTML, display
 from matplotlib import animation
 
 
@@ -19,6 +18,7 @@ def display_images(images: List[np.ndarray], dpi=100.0, format="html5_video", **
         http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-as-interactive-javascript-widgets/
         https://stackoverflow.com/questions/35532498/animation-in-ipython-notebook/46878531#46878531
     """
+    from IPython.display import HTML, display
     h, w = images[0].shape[:2]
     fig = plt.figure(figsize=(h / dpi, w / dpi), dpi=dpi)
     fig_im = plt.figimage(images[0])
