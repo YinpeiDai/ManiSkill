@@ -226,9 +226,9 @@ class BaseEnv(gym.Env):
         self.robot_uids = robot_uids
         if isinstance(robot_uids, tuple) and len(robot_uids) == 1:
             self.robot_uids = robot_uids[0]
-        if self.SUPPORTED_ROBOTS is not None:
-            if self.robot_uids not in self.SUPPORTED_ROBOTS:
-                logger.warn(f"{self.robot_uids} is not in the task's list of supported robots. Code may not run as intended")
+        # if self.SUPPORTED_ROBOTS is not None:
+        #     if self.robot_uids not in self.SUPPORTED_ROBOTS:
+        #         logger.warn(f"{self.robot_uids} is not in the task's list of supported robots. Code may not run as intended")
 
         if sim_backend == "auto":
             if num_envs > 1:
